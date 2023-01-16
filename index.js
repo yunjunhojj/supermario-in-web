@@ -6,9 +6,16 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 const gravity = 0.5;
+const gravity = 0.5;
 class Player {
   constructor() {
     this.position = {
+      x: 100,
+      y: 100,
+    };
+    this.velocity = {
+      x: 0,
+      y: 1,
       x: 100,
       y: 100,
     };
@@ -21,6 +28,7 @@ class Player {
   }
 
   draw() {
+    c.fillStyle = "red";
     c.fillStyle = "red";
     c.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
@@ -36,11 +44,4 @@ class Player {
 }
 
 const player = new Player();
-
-function animate() {
-  requestAnimationFrame(animate);
-  c.clearRect(0, 0, canvas.width, canvas.height);
-  player.update();
-}
-
-animate();
+player.draw();
