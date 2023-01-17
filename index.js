@@ -73,6 +73,8 @@ const keys = {
   },
 };
 
+let scrollOffset = 0;
+
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
@@ -89,15 +91,22 @@ function animate() {
     player.velocity.x = 0;
 
     if (keys.right.pressed) {
+      scrollOffset += 5;
       platforms.forEach((platform) => {
         platform.position.x -= 5;
       });
     } else if (keys.left.pressed) {
+      scrollOffset -= 5;
       platforms.forEach((platform) => {
         platform.position.x += 5;
       });
     }
   }
+
+  if (scrollOffset > 2000) {
+    console.log("you win", "이겼다");
+  }
+
   platforms.forEach((platform) => {
     if (
       player.position.y + player.height <= platform.position.y &&
